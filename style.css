@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.notification-badge {
+  @apply absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-6 mb-6;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md text-white font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700;
+}
+
+.status-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.status-available {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-unavailable {
+  @apply bg-red-100 text-red-800;
+}
+
+.sidenav {
+  @apply fixed left-0 top-0 h-full w-64 bg-gray-800 text-white p-4 transform transition-transform duration-200 ease-in-out;
+}
+
+.sidenav-link {
+  @apply flex items-center space-x-2 py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors;
+}
+
+.sidenav-link.active {
+  @apply bg-blue-600;
+}
+
+.main-content {
+  @apply ml-64;
+}
+
+.match-report-card {
+  @apply bg-white rounded-lg shadow-md p-6 mb-6;
+}
+
+.match-report-status {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.status-pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-submitted {
+  @apply bg-green-100 text-green-800;
+}
