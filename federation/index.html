@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Fédération - FootConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-blue-800 text-white">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold mb-8">FootConnect</h1>
+                <nav class="space-y-2">
+                    <a href="index.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 active bg-blue-700">
+                        Tableau de bord
+                    </a>
+                    <a href="playerLists.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">
+                        Listes des Joueurs
+                    </a>
+                    <a href="injuries.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">
+                        Blessures
+                    </a>
+                    <a href="sanctions.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">
+                        Sanctions
+                    </a>
+                    <a href="matches.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">
+                        Matchs
+                    </a>
+                    <a href="statistics.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">
+                        Statistiques
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white shadow">
+                <div class="px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-gray-800">Tableau de Bord</h2>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Statistiques Rapides -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Aperçu Général</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-gray-600">Listes en attente</p>
+                                <p class="text-2xl font-bold text-blue-600">3</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Joueurs blessés</p>
+                                <p class="text-2xl font-bold text-red-600">5</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Matchs à venir</p>
+                                <p class="text-2xl font-bold text-green-600">8</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activités Récentes -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Activités Récentes</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                <p class="text-sm">Nouvelle liste soumise par AS FAR</p>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                                <p class="text-sm">Blessure signalée - Mohammed Alami</p>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                <p class="text-sm">Match programmé - WAC vs RCA</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions Rapides -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Actions Rapides</h3>
+                        <div class="space-y-3">
+                            <a href="playerLists.html" class="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                Valider une Liste
+                            </a>
+                            <a href="matches.html" class="block w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                Ajouter un Match
+                            </a>
+                            <a href="sanctions.html" class="block w-full text-center bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">
+                                Gérer les Sanctions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

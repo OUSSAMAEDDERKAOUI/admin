@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Fédération - FootConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-blue-800 text-white">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold mb-8">FootConnect</h1>
+                <nav class="space-y-2">
+                    <a href="index.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">
+                        Tableau de bord
+                    </a>
+                    <a href="#"
+                        class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 active bg-blue-700"
+                        id="playerListsTab">
+                        Listes des Joueurs
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700"
+                        id="injuriesTab">
+                        Blessures
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700"
+                        id="sanctionsTab">
+                        Sanctions
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700"
+                        id="matchesTab">
+                        Matchs
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700"
+                        id="statisticsTab">
+                        Statistiques
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white shadow">
+                <div class="px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-gray-800" id="mainTitle">Administration Fédération</h2>
+                        <div class="space-x-2">
+                            <button id="btnExport"
+                                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                Exporter
+                            </button>
+                            <button id="btnAction"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                Nouvelle Action
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="p-6">
+                <!-- Player Lists Section -->
+                <div id="playerListsSection" class="section">
+                    <div class="bg-white rounded-lg shadow mb-6">
+                        <div class="p-4">
+                            <div class="flex flex-wrap gap-4">
+                                <div class="flex-1 min-w-[200px]">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Équipe</label>
+                                    <select class="w-full border rounded-lg px-3 py-2" id="teamFilter">
+                                        <option value="all">Toutes les équipes</option>
+                                    </select>
+                                </div>
+                                <div class="flex-1 min-w-[200px]">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Statut</label>
+                                    <select class="w-full border rounded-lg px-3 py-2" id="statusFilter">
+                                        <option value="all">Tous les statuts</option>
+                                        <option value="pending">En attente</option>
+                                        <option value="validated">Validé</option>
+                                        <option value="rejected">Rejeté</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Équipe</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Date Soumission</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Nombre de Joueurs</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Statut</th>
+                                    <th
+                                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="playerListsTableBody">
+                                <!-- Data will be inserted here via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Injuries and Sanctions Section -->
+                <div id="injuriesSanctionsSection" class="section ">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Injuries Panel -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-4 border-b">
+                                <h3 class="text-lg font-semibold">Blessures</h3>
+                            </div>
+                            <div class="p-4">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">
+                                                Joueur</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">
+                                                Blessure</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">
+                                                Statut</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="injuriesTableBody">
+                                        <!-- Data will be inserted here via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Sanctions Panel -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-4 border-b">
+                                <h3 class="text-lg font-semibold">Sanctions</h3>
+                            </div>
+                            <div class="p-4">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">
+                                                Joueur</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">
+                                                Type</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">
+                                                Durée</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="sanctionsTableBody">
+                                        <!-- Data will be inserted here via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matches Section -->
+                <div id="matchesSection" class="section ">
+                    <div class="bg-white rounded-lg shadow mb-6">
+                        <div class="p-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                                    <input type="date" class="w-full border rounded-lg px-3 py-2" id="matchDateFilter">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Compétition</label>
+                                    <select class="w-full border rounded-lg px-3 py-2" id="competitionFilter">
+                                        <option value="all">Toutes les compétitions</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Statut</label>
+                                    <select class="w-full border rounded-lg px-3 py-2" id="matchStatusFilter">
+                                        <option value="all">Tous les statuts</option>
+                                        <option value="scheduled">Programmé</option>
+                                        <option value="inProgress">En cours</option>
+                                        <option value="finished">Terminé</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Date</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Match</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Score</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Lieu</th>
+                                    <th
+                                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="matchesTableBody">
+                                <!-- Data will be inserted here via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Statistics Section -->
+                <div id="statisticsSection" class="section ">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg shadow p-4">
+                            <h3 class="text-lg font-semibold mb-4">Statistiques Générales</h3>
+                            <canvas id="generalStats"></canvas>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-4">
+                            <h3 class="text-lg font-semibold mb-4">Sanctions par Équipe</h3>
+                            <canvas id="sanctionsStats"></canvas>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-4">
+                            <h3 class="text-lg font-semibold mb-4">Blessures par Type</h3>
+                            <canvas id="injuriesStats"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modals -->
+        <!-- Player List Validation Modal -->
+        <div id="playerListModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+            <div class="relative top-20 mx-auto p-5 border w-full max-w-4xl shadow-lg rounded-md bg-white">
+                <div class="flex justify-between items-center pb-4 border-b">
+                    <h3 class="text-xl font-semibold">Validation Liste des Joueurs</h3>
+                    <button class="modal-close text-gray-400 hover:text-gray-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-4" id="playerListModalContent">
+                    <!-- Content will be inserted here via JavaScript -->
+                </div>
+                <div class="mt-4 flex justify-end space-x-2">
+                    <button
+                        class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 modal-close">Fermer</button>
+                    <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                        id="rejectList">Rejeter</button>
+                    <button class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                        id="validateList">Valider</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Match Details Modal -->
+        <div id="matchModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+            <div class="relative top-20 mx-auto p-5 border w-full max-w-4xl shadow-lg rounded-md bg-white">
+                <div class="flex justify-between items-center pb-4 border-b">
+                    <h3 class="text-xl font-semibold">Détails du Match</h3>
+                    <button class="modal-close text-gray-400 hover:text-gray-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-4" id="matchModalContent">
+                    <!-- Content will be inserted here via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="federationAdmin.js"></script>
+</body>
+
+</html>
